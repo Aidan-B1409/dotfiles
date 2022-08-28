@@ -1,12 +1,23 @@
 - defaults:
     link:
       relink: true
+      force: true
 
 - clean: ['~']
 
 - link:
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
+    ~/.zshrc: zshrc
+    ~/.p10k.zsh: p10k.zsh
+    ~/.profile: profile
+    ~/.ssh/config:
+        create: true
+        path: ssh_config
+    ~/.gitconfig: gitconfig
+    ~/.config/lsd/config.yaml:
+        create: true
+        path: lsd_config
 
 # - create:
 #     - ~/downloads

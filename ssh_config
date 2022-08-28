@@ -1,0 +1,39 @@
+Host echoserver_local
+    HostName 192.168.1.249
+    User echo
+    Port 22
+
+Host echoserver
+    HostName echo-flex.ddns.net
+    User echo
+    Port 19742
+
+Host echopi_local
+    HostName 192.168.1.223
+    User echo
+    Port 22
+
+Host flip
+    HostName flip.engr.oregonstate.edu
+    User beerya
+    Port 22
+
+Host os1
+    User beerya
+    ProxyCommand ssh -q flip nc os1.engr.oregonstate.edu 22
+
+Host os2
+    User beerya
+    ProxyCommand ssh -q flip nc os2.engr.oregonstate.edu 22
+
+Host oldos1
+    User beerya
+    ProxyCommand ssh -q flip nc oldos1.engr.oregonstate.edu 22
+
+Host oldos2
+    User beerya
+    ProxyCommand ssh -q flip nc oldos2.engr.oregonstate.edu 22
+
+Host hpc
+    User beerya
+    ProxyCommand ssh -q flip nc submit-a.hpc.engr.oregonstate.edu 22
