@@ -8,6 +8,7 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export WIN="/mnt/c/Users/Aidan"
 
+# WSL2 patch - Go to linux home instead of windows home
 [[ $SHLVL -eq 1 ]] && cd ~/
 
 # if tmux is executable and not inside a tmux session, then try to attach.
@@ -29,8 +30,8 @@ fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt notify
 unsetopt beep
 bindkey -e
@@ -39,7 +40,7 @@ bindkey -e
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*' '' 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
-zstyle :compinstall filename '/home/echo/.zshrc'
+zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -112,7 +113,7 @@ alias pip="pip3"
 alias ml="locate"
 alias e="emacsclient -a ''"
 alias mkrepo="~/.scripts/ritual.sh"
-alias zshconfig="e ~/.zshrc"
+alias zshconfig="nv ~/.zshrc"
 alias gc="git commit -am"
 alias cp="rsync -a --info=progress2"
 alias cat="bat -pp"
@@ -121,6 +122,7 @@ alias vpn="sudo openvpn --config /etc/openvpn/ca_vancouver.ovpn --daemon"
 alias vpndc="sudo killall openvpn"
 alias htop="btm -b"
 alias du="dust"
+# -- Robert's Git Aliases
 alias gs='git status'
 alias gco='git checkout'
 alias gck='git checkout'
@@ -167,18 +169,18 @@ autoload zmv
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/echo/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("${HOME}/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/echo/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/echo/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "${HOME}/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "${HOME}/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/echo/miniconda3/bin:$PATH"
+        export PATH="${HOME}/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
 
-[ -f "/home/echo/.ghcup/env" ] && source "/home/echo/.ghcup/env" # ghcup-env
+[ -f "${HOME}/.ghcup/env" ] && source "${HOME}/.ghcup/env" # ghcup-env
