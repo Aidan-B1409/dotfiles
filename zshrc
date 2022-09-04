@@ -8,7 +8,7 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export WIN="/mnt/c/Users/Aidan"
 
-[[ $SHLVL -eq 1 ]] && cd /home/echo
+[[ $SHLVL -eq 1 ]] && cd ~/
 
 # if tmux is executable and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
@@ -70,8 +70,8 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "unixorn/fzf-zsh-plugin"
 zplug "plugins/pip", from:oh-my-zsh
-zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 zplug "z-shell/fast-syntax-highlighting"
+zplug "bckim92/zsh-autoswitch-conda"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "ael-code/zsh-colored-man-pages"
@@ -102,6 +102,7 @@ alias bat="batcat"
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
+alias nv='nvim'
 alias lt='ls --tree --depth 3'
 alias lctree="colorls  --tree --sd"
 alias emacs="emacs -nw"

@@ -18,6 +18,9 @@
     ~/.config/lsd/config.yaml:
         create: true
         path: lsd_config
+    ~/.config/nvim:
+        create: true
+        path: nvim
 
 # - create:
 #     - ~/downloads
