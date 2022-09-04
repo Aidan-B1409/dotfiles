@@ -1,12 +1,13 @@
 export CUDA_HOME=/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
-export PATH=$HOME/bin:~/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:~/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/cmake-3.24.1-linux-x86_64/bin:$HOME/neovim/build/bin:$HOME/node-v16.17.0-linux-x64/bin:$HOME/neovim:$PATH
 export LANG="en_US.UTF-8"
 export TERM=screen-256color
 export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export WIN="/mnt/c/Users/Aidan"
+export VIMRUNTIME=runtime
 
 # WSL2 patch - Go to linux home instead of windows home
 [[ $SHLVL -eq 1 ]] && cd ~/
@@ -103,7 +104,7 @@ alias bat="batcat"
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias nv='nvim'
+alias nv=nvim
 alias lt='ls --tree --depth 3'
 alias lctree="colorls  --tree --sd"
 alias emacs="emacs -nw"
@@ -169,14 +170,14 @@ autoload zmv
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$("${HOME}/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "${HOME}/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "${HOME}/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="${HOME}/miniconda3/bin:$PATH"
+        export PATH="$/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
