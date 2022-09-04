@@ -1,7 +1,7 @@
 export CUDA_HOME=/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
-export PATH=$HOME/bin:~/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/cmake-3.24.1-linux-x86_64/bin:$HOME/neovim/build/bin:$HOME/node-v16.17.0-linux-x64/bin:$HOME/neovim:$PATH
+export PATH=$HOME/bin:~/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/cmake-3.24.1-linux-x86_64/bin:$HOME/neovim/build/bin:$HOME/node-v16.17.0-linux-x64/bin:$PATH
 export LANG="en_US.UTF-8"
 export TERM=screen-256color
 export FZF_DEFAULT_COMMAND='fd --type file'
@@ -25,7 +25,7 @@ export VIMRUNTIME=$HOME/neovim/runtime
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]];
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
