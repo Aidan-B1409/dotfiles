@@ -22,6 +22,9 @@
     ~/.config/nvim:
         create: true
         path: nvim
+    ~/.config/foot/foot.ini:
+        create: true
+        path: foot.ini
 
 # - create:
 #     - ~/downloads
