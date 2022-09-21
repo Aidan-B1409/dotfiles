@@ -116,7 +116,6 @@ export FZF_DEFAULT_OPTS="--height 50% -1 --layout=reverse-list --multi --preview
 
 # Aliases
 alias reload="exec zsh"
-alias bat="batcat"
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
