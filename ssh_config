@@ -19,8 +19,10 @@ Host flip
     Port 22
 
 Host os1
+    HostName os1.engr.oregonstate.edu
     User beerya
-    ProxyCommand ssh -q flip nc os1.engr.oregonstate.edu 22
+    LogLevel error
+    ProxyJump flip
 
 Host os2
     User beerya
@@ -37,3 +39,9 @@ Host oldos2
 Host hpc
     User beerya
     ProxyCommand ssh -q flip nc submit-a.hpc.engr.oregonstate.edu 22
+
+Host pelican
+    Hostname pelican.engr.oregonstate.edu
+    User beerya
+    LogLevel error
+    ProxyJump flip
