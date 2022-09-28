@@ -16,6 +16,7 @@ Host echopi_local
 Host flip
     HostName flip.engr.oregonstate.edu
     User beerya
+    LogLevel error
     Port 22
 
 Host os1
@@ -25,16 +26,22 @@ Host os1
     ProxyJump flip
 
 Host os2
+    HostName os2.engr.oregonstate.edu
     User beerya
-    ProxyCommand ssh -q flip nc os2.engr.oregonstate.edu 22
+    LogLevel error
+    ProxyJump flip
 
 Host oldos1
+    HostName oldos1.engr.oregonstate.edu
     User beerya
-    ProxyCommand ssh -q flip nc oldos1.engr.oregonstate.edu 22
+    LogLevel error
+    ProxyJump flip
 
 Host oldos2
+    HostName oldos2.engr.oregonstate.edu
     User beerya
-    ProxyCommand ssh -q flip nc oldos2.engr.oregonstate.edu 22
+    LogLevel error
+    ProxyJump flip
 
 Host hpc 
     Hostname submit-a.hpc.engr.oregonstate.edu
