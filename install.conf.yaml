@@ -25,6 +25,9 @@
     ~/.config/foot/foot.ini:
         create: true
         path: foot.ini
+    ~/.config/alacritty/alacritty.yml:
+       create: true
+       path: alacritty.yml
 
 # - create:
 #     - ~/downloads
