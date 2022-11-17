@@ -82,7 +82,7 @@ window:
   #startup_mode: Windowed
 
   # Window title
-  title: monarch_cmd
+  title: alter-ego
 
   # Allow terminal applications to change Alacritty's window title.
   #dynamic_title: true
