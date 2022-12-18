@@ -11,14 +11,14 @@ export WIN="/mnt/c/Users/Aidan"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/beerya/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/theta/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/beerya/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/beerya/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/theta/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/theta/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/beerya/miniconda3/bin:$PATH"
+        export PATH="/home/theta/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -26,7 +26,7 @@ unset __conda_setup
 
 
 # WSL2 patch - Go to linux home instead of windows home
-[[ $SHLVL -eq 1 ]] && cd ~/
+# [[ $SHLVL -eq 1 ]] && cd ~/
 
 # if tmux is executable and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
@@ -49,7 +49,9 @@ fi
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+setopt appendhistory
 setopt notify
+setopt share_history
 unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -137,13 +139,13 @@ source ~/.zplug/init.zsh
 
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "unixorn/fzf-zsh-plugin"
+zplug "jeffreytse/zsh-vi-mode"
 zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "unixorn/fzf-zsh-plugin"
 zplug "plugins/pip", from:oh-my-zsh
 zplug "z-shell/fast-syntax-highlighting"
-zplug "bckim92/zsh-autoswitch-conda"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "ael-code/zsh-colored-man-pages"
@@ -234,7 +236,3 @@ alias master='git checkout master'
 
 
 autoload zmv
-
-
-
-[ -f "${HOME}/.ghcup/env" ] && source "${HOME}/.ghcup/env" # ghcup-env

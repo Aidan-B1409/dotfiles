@@ -1,6 +1,0 @@
-{
-    "python.venvPath": "/home/beerya/miniconda3/envs/",
-    "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnSaveFiletypes": ["python"],
-    "python.formatting.provider": "black"
-}
