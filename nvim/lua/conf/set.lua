@@ -28,3 +28,4 @@ vim.opt.updatetime = 50
 vim.opt.signcolumn = 'yes'
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.opt.clipboard = 'unnamedplus'
