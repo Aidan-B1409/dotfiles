@@ -3,7 +3,7 @@ Host arc-echo_local
     User echo
     Port 22
 
-Host arc-ech
+Host arc-echo
     HostName echo-flex.ddns.net
     User echo
     Port 19742
