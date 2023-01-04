@@ -1,0 +1,63 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+[plugins]
+
+# For example:
+#
+#[plugins.base16]
+#github = "chriskempson/base16-shell"
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
+
+[plugins.fzf-zsh-plugin]
+github = 'unixorn/fzf-zsh-plugin'
+
+[plugins.zsh-vi-mode]
+github = 'jeffreytse/zsh-vi-mode'
+
+[plugins.zsh-256color]
+github = 'chrissicool/zsh-256color'
+
+[plugins.zsh-autosuggestions]
+github = 'zsh-users/zsh-autosuggestions'
+
+[plugins.zsh-history-substring-search]
+github = 'zsh-users/zsh-history-substring-search'
+
+[plugins.zsh-completions]
+github = 'zsh-users/zsh-completions'
+
+[plugins.zsh-colored-man-pages]
+github = 'ael-code/zsh-colored-man-pages'
+
+[plugins.cd-ls]
+github = 'zshzoo/cd-ls'
+
+[plugins.zsh-syntax-highlighting]
+github = 'zsh-users/zsh-syntax-highlighting'
+
+#zplug "romkatv/powerlevel10k", as:theme, depth:1
+#zplug "unixorn/fzf-zsh-plugin"
+#zplug "jeffreytse/zsh-vi-mode"
+#zplug "chrissicool/zsh-256color"
+#zplug "zsh-users/zsh-autosuggestions"
+#zplug "zsh-users/zsh-history-substring-search"
+#zplug "unixorn/fzf-zsh-plugin"
+#zplug "plugins/pip", from:oh-my-zsh
+#zplug "z-shell/fast-syntax-highlighting"
+#zplug "zsh-users/zsh-completions"
+#zplug "zsh-users/zsh-history-substring-search"
+#zplug "ael-code/zsh-colored-man-pages"
+#zplug "zshzoo/cd-ls"

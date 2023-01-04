@@ -22,6 +22,9 @@
     ~/.config/nvim:
         create: true
         path: nvim
+    ~/.config/sheldon:
+        create: true
+        path: sheldon
           
 # - create:
 #     - ~/downloads

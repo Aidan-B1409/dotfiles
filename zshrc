@@ -26,9 +26,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-# WSL2 patch - Go to linux home instead of windows home
-# [[ $SHLVL -eq 1 ]] && cd ~/
-
 # if tmux is executable and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
 [ -x "$(command -v tmux)" ] \
@@ -125,46 +122,7 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
-#-------------------------------------
-# Begin ZPLUG config 
-#-------------------------------------
-
-# Check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
-fi
-
-# Essential
-source ~/.zplug/init.zsh
-
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "unixorn/fzf-zsh-plugin"
-zplug "jeffreytse/zsh-vi-mode"
-zplug "chrissicool/zsh-256color"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "unixorn/fzf-zsh-plugin"
-zplug "plugins/pip", from:oh-my-zsh
-zplug "z-shell/fast-syntax-highlighting"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "ael-code/zsh-colored-man-pages"
-zplug "zshzoo/cd-ls"
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-# Then, source plugins and add commands to $PATH
-zplug load
-
-#----------------------------------
-# End Zplug config
-#----------------------------------
+eval "$(sheldon source)"
 
 # FZF mappings and options
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
