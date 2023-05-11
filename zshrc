@@ -1,3 +1,4 @@
+# # >>> ENVIRONMENT VARIABLES
 export CUDA_HOME=/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
@@ -10,39 +11,8 @@ export WIN="/mnt/c/Users/Aidan"
 export ZLE_RPROMPT_INDENT=0
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/theta/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/theta/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/theta/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/theta/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
-
-# if tmux is executable and not inside a tmux session, then try to attach.
-# if attachment fails, start a new session
-[ -x "$(command -v tmux)" ] \
-    && [ -z "${TMUX}" ] \
-    && { tmux attach || tmux; } >/dev/null 2>&1
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
+# # >>> ZSH INSTALLATION CONFIGURATION
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -54,7 +24,6 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*' '' 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
 zstyle :compinstall filename '${HOME}/.zshrc'
@@ -64,10 +33,47 @@ compinit
 # End of lines added by compinstall
 
 
-#Keybinds
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/theta/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/theta/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/theta/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/theta/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# # <<< conda initialize <<<
+
+
+
+# if tmux is executable and not inside a tmux session, then try to attach.
+# if attachment fails, start a new session
+# [ -x "$(command -v tmux)" ] \
+#     && [ -z "${TMUX}" ] \
+#     && { tmux attach || tmux; } >/dev/null 2>&1
+
+
+
+# # >>> P10K CONFIGURATION
+# To customize prompt, run `p10k configure` or edit ~/dotfiles/p10k.zsh.
+[[ ! -f ~/dotfiles/p10k.zsh ]] || source ~/dotfiles/p10k.zsh
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+
+# # >>> KEYBINDING SETUP
 
 alias ls="lsd"
-
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
@@ -124,6 +130,8 @@ key[Control-Right]="${terminfo[kRIT5]}"
 
 eval "$(sheldon source)"
 
+
+
 # FZF mappings and options
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
@@ -153,6 +161,7 @@ alias vpn="sudo openvpn --config /etc/openvpn/ca_vancouver.ovpn --daemon"
 alias vpndc="sudo killall openvpn"
 alias htop="btm -b"
 alias du="dust"
+
 # -- Robert's Git Aliases
 alias gs='git status'
 alias gco='git checkout'
@@ -195,3 +204,5 @@ alias master='git checkout master'
 
 
 autoload zmv
+
+

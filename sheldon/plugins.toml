@@ -16,8 +16,6 @@ shell = "zsh"
 
 # For example:
 #
-#[plugins.base16]
-#github = "chriskempson/base16-shell"
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 
@@ -26,9 +24,6 @@ github = 'unixorn/fzf-zsh-plugin'
 
 [plugins.zsh-vi-mode]
 github = 'jeffreytse/zsh-vi-mode'
-
-[plugins.zsh-256color]
-github = 'chrissicool/zsh-256color'
 
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
@@ -39,14 +34,16 @@ github = 'zsh-users/zsh-history-substring-search'
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'
 
-[plugins.zsh-colored-man-pages]
-github = 'ael-code/zsh-colored-man-pages'
-
 [plugins.cd-ls]
 github = 'zshzoo/cd-ls'
 
-[plugins.zsh-syntax-highlighting]
-github = 'zsh-users/zsh-syntax-highlighting'
+[plugins.fast-syntax-highlighting]
+github = 'zdharma-continuum/fast-syntax-highlighting'
+
+[plugins.zoxide]
+inline = 'eval "$(zoxide init zsh --cmd cd)"'
+
+
 
 #zplug "romkatv/powerlevel10k", as:theme, depth:1
 #zplug "unixorn/fzf-zsh-plugin"
