@@ -243,16 +243,16 @@ lvim.plugins = {
 }
 
 require("onedarkpro").setup({
-    colors = {},     -- Override default colors or create your own
-    highlights = {}, -- Override default highlight groups or create your own
-    filetypes = {    -- Override which filetype highlight groups are loaded
+    colors = {},                                  -- Override default colors or create your own
+    highlights = { LineNr = { fg = "#F2F2F2" } }, -- Override default highlight groups or create your own
+    filetypes = {                                 -- Override which filetype highlight groups are loaded
         -- See the 'Configuring filetype highlights' section for the available list
     },
     plugins = { -- Override which plugin highlight groups are loaded
         -- See the 'Supported plugins' section for the available list
     },
     styles = {
-                               -- For example, to apply bold and italic, use "bold,italic"
+        -- For example, to apply bold and italic, use "bold,italic"
         types = "NONE",        -- Style that is applied to types
         numbers = "NONE",      -- Style that is applied to numbers
         strings = "NONE",      -- Style that is applied to strings
