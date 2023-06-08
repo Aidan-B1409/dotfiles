@@ -1,7 +1,7 @@
 # # >>> ENVIRONMENT VARIABLES
 export CUDA_HOME=/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
-export PATH=$PATH:$CUDA_HOME/bin
+export PATH=$PATH:$CUDA_HOME/bin:~/go/bin
 export PATH=$HOME/bin:~/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 export LANG="en_US.UTF-8"
 export TERM=screen-256color

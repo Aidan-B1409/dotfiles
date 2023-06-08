@@ -38,7 +38,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.signcolumn = 'yes'
 
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 vim.opt.clipboard = 'unnamedplus'
 
 -- general
@@ -313,3 +313,5 @@ null_ls.setup({
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+require 'lspconfig'.arduino_language_server.setup{filetypes={'arduino', 'ino'}}
+--
