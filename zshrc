@@ -33,24 +33,6 @@ compinit
 # End of lines added by compinstall
 
 
-
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/theta/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/theta/.miniconda3/etc/profile.d/conda.sh" ]; then
-# . "/home/theta/.miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-    else
-# export PATH="/home/theta/.miniconda3/bin:$PATH"  # commented out by conda initialize
-    fi
-fi
-unset __conda_setup
-# # <<< conda initialize <<<
-
-
-
 # if tmux is executable and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
 # [ -x "$(command -v tmux)" ] \
@@ -211,4 +193,24 @@ autoload zmv
 
 # Fix white theme
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/theta/.mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/theta/.mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/theta/.mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/theta/.mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/theta/.mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/theta/.mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 

@@ -54,3 +54,15 @@ Host pelican
     User beerya
     LogLevel error
     ProxyJump flip
+
+Host aws-food-waste-dev
+    Hostname ec2-54-214-80-154.us-west-2.compute.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/detection-preview-key.pem
+
+Host aws-food-waste-prod
+    Hostname ec2-54-244-119-45.us-west-2.compute.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/detection-preview-key.pem
+
+
