@@ -19,9 +19,6 @@
     ~/.config/lsd/config.yaml:
         create: true
         path: lsd_config
-    ~/.config/lvim:
-        create: true
-        path: lvim
     ~/.config/sheldon:
         create: true
         path: sheldon
