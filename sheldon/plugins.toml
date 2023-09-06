@@ -19,9 +19,6 @@ shell = "zsh"
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 
-[plugins.fzf-zsh-plugin]
-github = 'unixorn/fzf-zsh-plugin'
-
 [plugins.zsh-vi-mode]
 github = 'jeffreytse/zsh-vi-mode'
 
@@ -43,6 +40,8 @@ github = 'zdharma-continuum/fast-syntax-highlighting'
 [plugins.zoxide]
 inline = 'eval "$(zoxide init zsh --cmd cd)"'
 
+[plugins.fzf-zsh-plugin]
+github = 'unixorn/fzf-zsh-plugin'
 
 
 #zplug "romkatv/powerlevel10k", as:theme, depth:1
