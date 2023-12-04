@@ -44,7 +44,7 @@ Host oldos2
     ProxyJump flip
 
 Host hpc 
-    Hostname submit-a.hpc.engr.oregonstate.edu
+    Hostname submit-c.hpc.engr.oregonstate.edu
     User beerya
     LogLevel error
     ProxyJump flip
