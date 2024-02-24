@@ -37,9 +37,9 @@ compinit
 
 # if tmux is executable and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
-# [ -x "$(command -v tmux)" ] \
-#     && [ -z "${TMUX}" ] \
-#     && { tmux attach || tmux; } >/dev/null 2>&1
+[ -x "$(command -v tmux)" ] \
+    && [ -z "${TMUX}" ] \
+    && { tmux attach || tmux; } >/dev/null 2>&1
 
 
 
@@ -145,6 +145,7 @@ alias vpn="sudo openvpn --config /etc/openvpn/ca_vancouver.ovpn --daemon"
 alias vpndc="sudo killall openvpn"
 alias htop="btm -b"
 alias du="dust"
+alias mm="micromamba"
 
 # -- Robert's Git Aliases
 alias gs='git status'
@@ -196,23 +197,15 @@ autoload zmv
 # Fix white theme
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/theta/.mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE='/home/theta/.local/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/theta/.micromamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+    eval "$__mamba_setup"
 else
-    if [ -f "/home/theta/.mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/theta/.mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/theta/.mambaforge/bin:$PATH"
-    fi
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
 fi
-unset __conda_setup
-
-if [ -f "/home/theta/.mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/theta/.mambaforge/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
+unset __mamba_setup
+# <<< mamba initialize <<<
