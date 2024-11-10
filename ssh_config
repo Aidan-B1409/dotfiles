@@ -43,6 +43,11 @@ Host oldos2
     LogLevel error
     ProxyJump flip
 
+Host sb-binsight
+    Hostname sb-binsight.dri.oregonstate.edu
+    User beerya
+    LogLevel error
+
 Host hpc 
     Hostname submit-b.hpc.engr.oregonstate.edu
     User beerya

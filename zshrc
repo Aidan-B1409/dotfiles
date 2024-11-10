@@ -11,13 +11,14 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export WIN="/mnt/c/Users/Aidan"
 export ZLE_RPROMPT_INDENT=0
+export PATH=/mnt/c/Users/Aidan/Documents/bin:$PATH
 
 
 
 # # >>> ZSH INSTALLATION CONFIGURATION
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=10000
+HISTSIZE=1000
 SAVEHIST=10000
 setopt appendhistory
 setopt notify
