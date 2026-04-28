@@ -3,3 +3,6 @@
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
 
+[submodule "neovim"]
+	path = nvim
+	url = git@github.com:Aidan-B1409/lazyvim.git
