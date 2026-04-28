@@ -2,14 +2,19 @@
 
 [aws]
 format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]"
-symbol = "\ue33d "
-disabled = true
+symbol = "\uf0ef "
 
 [azure]
 format = "\\[[$symbol($subscription)]($style)\\]"
+symbol = "\ue754 "
 
 [battery]
+charging_symbol = "\U000f0084 "
+discharging_symbol = "\U000f0083 "
+empty_symbol = "\U000f008e "
 format = "\\[[$symbol$percentage]($style)\\]"
+full_symbol = "\U000f0079 "
+unknown_symbol = "\U000f0091 "
 
 [buf]
 format = "\\[[$symbol($version)]($style)\\]"
@@ -32,13 +37,15 @@ format = "\\[[⏱ $duration]($style)\\]"
 
 [cobol]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\uf013 "
 
 [conda]
 format = "\\[[$symbol$environment]($style)\\]"
-symbol = "\uf10c "
+symbol = "\ue715 "
 
 [container]
 format = "\\[[$symbol \\[$name\\]]($style)\\]"
+symbol = "\uf4b7 "
 
 [cpp]
 format = "\\[[$symbol($version(-$name))]($style)\\]"
@@ -53,7 +60,7 @@ format = "\\[[$symbol($version)]($style)\\]"
 
 [dart]
 format = "\\[[$symbol($version)]($style)\\]"
-symbol = "\ue798 "
+symbol = "\ue64c "
 
 [deno]
 format = "\\[[$symbol($version)]($style)\\]"
@@ -64,6 +71,7 @@ read_only = " \U000f033e"
 
 [direnv]
 format = "\\[[$symbol$loaded/$allowed]($style)\\]"
+symbol = "\ue613 "
 
 [docker_context]
 format = "\\[[$symbol$context]($style)\\]"
@@ -71,6 +79,7 @@ symbol = "\uf308 "
 
 [dotnet]
 format = "\\[[$symbol($version)(🎯 $tfm)]($style)\\]"
+symbol = "\ue77f "
 
 [elixir]
 format = "\\[[$symbol($version \\(OTP $otp_version\\))]($style)\\]"
@@ -82,6 +91,7 @@ symbol = "\ue62c "
 
 [erlang]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\uf23f "
 
 [fennel]
 format = "\\[[$symbol($version)]($style)\\]"
@@ -100,7 +110,7 @@ format = "\\[[+$added]($added_style)\\]\\[[-$deleted]($deleted_style)\\]"
 
 [gcloud]
 format = "\\[[$symbol$account(@$domain)(\\($region\\))]($style)\\]"
-symbol = "\ue7f1 "
+symbol = "\U000f11f6 "
 
 [git_branch]
 format = "\\[[$symbol$branch]($style)\\]"
@@ -121,6 +131,7 @@ format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [gleam]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\uf005 "
 
 [golang]
 format = "\\[[$symbol($version)]($style)\\]"
@@ -144,18 +155,21 @@ symbol = "\ue666 "
 
 [helm]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\ue7fb "
 
 [hg_branch]
 format = "\\[[$symbol$branch]($style)\\]"
 symbol = "\uf418 "
 
 [hostname]
-format = "\\[[$ssh_symbol($hostname)]($style)\\] "
+ssh_only = false
+style = "bold green"
+format = "[$ssh_symbol($hostname)]($style)\\] "
 ssh_symbol = "\ueb01 "
 
 [java]
 format = "\\[[$symbol($version)]($style)\\]"
-symbol = "\ue256 "
+symbol = "\ue738 "
 
 [jobs]
 format = "\\[[$symbol$number]($style)\\]"
@@ -170,6 +184,7 @@ symbol = "\ue634 "
 
 [kubernetes]
 format = "\\[[$symbol$context( \\($namespace\\))]($style)\\]"
+symbol = "\U000f10fe "
 
 [localip]
 format = "\\[[$localipv4]($style)\\]"
@@ -177,6 +192,10 @@ format = "\\[[$localipv4]($style)\\]"
 [lua]
 format = "\\[[$symbol($version)]($style)\\]"
 symbol = "\ue620 "
+
+[maven]
+format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\ue674 "
 
 [memory_usage]
 format = "\\[$symbol[$ram( | $swap)]($style)\\]"
@@ -191,16 +210,19 @@ format = "\\[[$symbol$health]($style)\\]"
 
 [mojo]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\U000f0238 "
 
 [nats]
 format = "\\[[$symbol$name]($style)\\]"
+symbol = "\uf0e0 "
 
 [netns]
 format = "\\[[$symbol \\[$name\\]]($style)\\]"
+symbol = "\U000f06f3 "
 
 [nim]
 format = "\\[[$symbol($version)]($style)\\]"
-symbol = "\U000f01a5 "
+symbol = "\ue677 "
 
 [nix_shell]
 format = "\\[[$symbol$state( \\($name\\))]($style)\\]"
@@ -216,12 +238,15 @@ symbol = "\ue67a "
 
 [odin]
 format = "\\[[$symbol($version )]($style)\\]"
+symbol = "\U000f07e2 "
 
 [opa]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\uf132 "
 
 [openstack]
 format = "\\[[$symbol$cloud(\\($project\\))]($style)\\]"
+symbol = "\ue856 "
 
 [os]
 format = "\\[[$symbol]($style)\\]"
@@ -248,9 +273,11 @@ symbol = "\U000f03d7 "
 
 [pulumi]
 format = "\\[[$symbol$stack]($style)\\]"
+symbol = "\ue873 "
 
 [purescript]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\ue630 "
 
 [python]
 format = "\\[[${symbol}${pyenv_prefix}(${version})(\\($virtualenv\\))]($style)\\]"
@@ -261,9 +288,11 @@ format = "\\[[$symbol($version)]($style)\\]"
 
 [raku]
 format = "\\[[$symbol($version-$vm_version)]($style)\\]"
+symbol = "\U000f158a "
 
 [red]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\U000f137c "
 
 [rlang]
 format = "\\[[$symbol($version)]($style)\\]"
@@ -284,14 +313,20 @@ symbol = "\ue737 "
 [shell]
 format = "\\[[$indicator]($style)\\]"
 
+[shlvl]
+symbol = "\U000f0e4d "
+
 [singularity]
 format = "\\[[$symbol\\[$env\\]]($style)\\]"
+symbol = "\uf4b7 "
 
 [solidity]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\ue8a6 "
 
 [spack]
 format = "\\[[$symbol$environment]($style)\\]"
+symbol = "\ue8aa "
 
 [status]
 format = "\\[[$symbol$status]($style)\\]"
@@ -299,6 +334,7 @@ symbol = "\uf467 "
 
 [sudo]
 format = "\\[[as $symbol]($style)\\]"
+symbol = "\uef01 "
 
 [swift]
 format = "\\[[$symbol($version)]($style)\\]"
@@ -306,24 +342,31 @@ symbol = "\ue755 "
 
 [terraform]
 format = "\\[[$symbol$workspace]($style)\\]"
+symbol = "\ue69a "
 
 [time]
 format = "\\[[$time]($style)\\]"
 
 [typst]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\uf37f "
 
 [username]
-format = "\\[[$user]($style)\\]"
+show_always = true
+style_user = "bold blue"
+style_root = "black bold red"
+format = "\\[[$user]($style)@"
 
 [vagrant]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\ue8d0 "
 
 [vcsh]
 format = "\\[vcsh [$symbol$repo]($style)\\]"
 
 [vlang]
 format = "\\[[$symbol($version)]($style)\\]"
+symbol = "\ue6ac "
 
 [xmake]
 format = "\\[[$symbol($version)]($style)\\]"
@@ -334,27 +377,31 @@ format = "\\[[$symbol($version)]($style)\\]"
 symbol = "\ue6a9 "
 
 [os.symbols]
+AIX = "\ue8cc "
 AlmaLinux = "\uf31d "
 Alpaquita = "\ueaa2 "
 Alpine = "\uf300 "
+ALTLinux = "\uf31a "
 Amazon = "\uf270 "
 Android = "\uf17b "
 AOSC = "\uf301 "
 Arch = "\uf303 "
 Artix = "\uf31f "
+Bluefin = "\uf31a "
 CachyOS = "\uf303 "
 CentOS = "\uf304 "
 Debian = "\uf306 "
 DragonFly = "\ue28e "
 Elementary = "\uf309 "
-Emscripten = "\uf205 "
-EndeavourOS = "\uf197 "
+Emscripten = "\ue6a1 "
+EndeavourOS = "\uf322 "
 Fedora = "\uf30a "
 FreeBSD = "\uf30c "
-Garuda = "\U000f06d3 "
+Garuda = "\uf337 "
 Gentoo = "\uf30d "
 HardenedBSD = "\U000f078c "
-Illumos = "\U000f0238 "
+Illumos = "\uf326 "
+InstantOS = "\uf31a "
 Ios = "\U000f0037 "
 Kali = "\uf327 "
 Linux = "\uf31a "
@@ -367,19 +414,24 @@ Mint = "\uf30e "
 NetBSD = "\uf024 "
 NixOS = "\uf313 "
 Nobara = "\uf380 "
-OpenBSD = "\U000f023a "
+OpenBSD = "\uf328 "
+OpenCloudOS = "\uf31a "
+openEuler = "\uf31a "
 openSUSE = "\uf314 "
-OracleLinux = "\U000f0337 "
+OracleLinux = "\U000f0ea1 "
+PikaOS = "\uf31a "
 Pop = "\uf32a "
 Raspbian = "\uf315 "
-Redhat = "\uf316 "
-RedHatEnterprise = "\uf316 "
+Redhat = "\U000f111b "
+RedHatEnterprise = "\U000f111b "
 Redox = "\U000f0018 "
 RockyLinux = "\uf32b "
-Solus = "\U000f0833 "
+Solus = "\uf32d "
 SUSE = "\uf314 "
 Ubuntu = "\uf31b "
+Ultramarine = "\uf31a "
 Unknown = "\uf22d "
+Uos = "\uf321 "
 Void = "\uf32e "
 Windows = "\U000f0372 "
 Zorin = "\uf32f "
