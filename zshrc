@@ -1,6 +1,7 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # System Variables
 export PATH="$PATH:/home/theta/.local/bin"
+export PATH="$PATH:/home/theta/Android/flutter/bin"
 export FZF_BASE=/usr/share/fzf
 export HISTFILE=/home/theta/.zsh_history
 # export FZF_PATH="/bin/usr/fzf"
@@ -73,5 +74,13 @@ znap source jeffreytse/zsh-vi-mode
 znap source zsh-users/zsh-history-substring-search
 
 source /usr/share/zsh/plugins/zsh-fzf-plugin/fzf.plugin.zsh
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Tmux
+if [[ -z "$TMUX" ]] then
+    tmux attach-session -t default || tmux new-session -s default
+fi
+
 
 fastfetch --logo arch

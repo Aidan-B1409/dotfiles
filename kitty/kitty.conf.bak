@@ -1,7 +1,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_THEME
-# Atelier Cave Dark
+# One Half Dark
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -3154,3 +3154,11 @@ include current-theme.conf
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_FONTS
+font_family      family="Hack Nerd Font Mono"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS

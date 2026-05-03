@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf: tmux.conf
+    ~/.config/nvim: nvim
+    ~/.config/kitty: kitty
+    ~/.config/starship.toml: starship.toml
+    ~/.zshrc: zshrc
+ 
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
