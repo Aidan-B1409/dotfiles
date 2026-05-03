@@ -1,6 +1,7 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
 [aws]
+disabled = true
 format = "\\[[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)\\]"
 symbol = "\uf0ef "
 
