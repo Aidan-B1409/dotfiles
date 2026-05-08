@@ -84,3 +84,5 @@ fi
 
 
 fastfetch --logo arch
+
+. "$HOME/.local/share/../bin/env"
