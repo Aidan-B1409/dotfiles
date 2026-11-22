@@ -10,7 +10,6 @@
       "humanizer",
       "modern-python",
       "openbalena-local-dev",
-      "unslop",
       "wandb-primary",
       "writing-clearly-and-concisely",
       "writing-for-agents"
@@ -68,7 +67,5 @@
       ]
     }
   },
-  "disabled_standalone_on_this_workstation": [
-    "unslop"
-  ]
+  "disabled_standalone_on_this_workstation": []
 }
