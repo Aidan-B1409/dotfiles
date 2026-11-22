@@ -8,6 +8,10 @@
       "source": "https://github.com/wshobson/agents.git",
       "ref": "91ff75307f5668916f3eb77d5ba556266c961376"
     },
+    "nature-skills": {
+      "source": "https://github.com/Yuan1z0825/nature-skills.git",
+      "ref": "8a7713697d4567b3337cb20cddc55613d88f518e"
+    },
     "text-to-cad": {
       "path": "~/.local/state/cad/plugin"
     }
@@ -15,6 +19,7 @@
   "profiles": {
     "common": [
       "ars-codex@ars-codex",
+      "nature-skills@nature-skills",
       "python-development@claude-code-workflows"
     ],
     "hpc": [],

@@ -18,6 +18,32 @@
       "ars-codex@ars-codex": [
         "academic-research-suite"
       ],
+      "nature-skills@nature-skills": [
+        "nature-academic-search",
+        "nature-citation",
+        "nature-data",
+        "nature-downloader",
+        "nature-experiment-log",
+        "nature-figure",
+        "nature-image2ppt",
+        "nature-literature-pipeline",
+        "nature-paper-card",
+        "nature-paper-to-patent",
+        "nature-paper-trans",
+        "nature-paper-xray",
+        "nature-paper2ppt",
+        "nature-paper2word",
+        "nature-polishing",
+        "nature-reader",
+        "nature-ref-verifier",
+        "nature-response",
+        "nature-reviewer",
+        "nature-shared",
+        "nature-social-science",
+        "nature-statistics",
+        "nature-writing",
+        "researchwrite"
+      ],
       "python-development@claude-code-workflows": [
         "async-python-patterns",
         "python-anti-patterns",
