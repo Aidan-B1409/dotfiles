@@ -1,0 +1,32 @@
+#!/bin/sh
+set -eu
+
+case "${1:-}" in
+    ''|--workstation) ;;
+    *) echo "Usage: $0 [--workstation]" >&2; exit 2 ;;
+esac
+
+if command -v register-python-argcomplete >/dev/null 2>&1 && command -v pipx >/dev/null 2>&1; then
+    completions="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions"
+    mkdir -p "$completions"
+    tmp=$(mktemp "$completions/.pipx.XXXXXX")
+    trap 'rm -f "$tmp"' EXIT
+    register-python-argcomplete pipx > "$tmp"
+    mv -f "$tmp" "$completions/_pipx"
+fi
+
+if [ "${1:-}" = --workstation ]; then
+    repo=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+    plugins="$repo/zsh_plugins"
+    install_plugin() {
+        if [ ! -d "$2/.git" ]; then
+            mkdir -p "$(dirname -- "$2")"
+            git clone --depth 1 --recurse-submodules --shallow-submodules "https://github.com/$1.git" "$2"
+        fi
+    }
+
+    install_plugin marlonrichert/zsh-snap "$plugins/znap"
+    while IFS= read -r plugin; do
+        install_plugin "$plugin" "$plugins/$plugin"
+    done < "$repo/profiles/workstation-plugins"
+fi

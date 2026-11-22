@@ -1,88 +1,36 @@
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-# System Variables
-export PATH="$PATH:/home/theta/.local/bin"
-export PATH="$PATH:/home/theta/Android/flutter/bin"
-export FZF_BASE=/usr/share/fzf
-export HISTFILE=/home/theta/.zsh_history
-# export FZF_PATH="/bin/usr/fzf"
+typeset -U path fpath
+# Drop the alternate spelling inherited from older shells.
+path=("$HOME/.local/bin" "${(@)path:#$HOME/.local/share/../bin}")
+export BALENARC_BALENA_URL="compostsense.com"
 
+# setup-zsh generates pipx completions here when argcomplete is installed.
+if [[ -d "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" ]]; then
+    fpath=("${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" "${fpath[@]}")
+fi
+autoload -Uz compinit && compinit
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-# Enable completions
-autoload -U compinit && compinit
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt APPEND_HISTORY SHARE_HISTORY HIST_IGNORE_SPACE HIST_IGNORE_DUPS
+unsetopt BEEP
 
-# pipx completions
-eval "$(register-python-argcomplete pipx)"
+if (( $+commands[lsd] )); then
+    alias ls=lsd
+    alias lt='lsd --tree --depth 3'
+fi
+(( $+commands[nvim] )) && alias nv=nvim
+(( $+commands[btm] )) && alias top=btm
+(( $+commands[rsync] )) && alias transfer='rsync -r --info=progress2'
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-# Ignore commands that start with spaces and duplicates.
-export HISTCONTROL=ignoreboth
-
-setopt append_history
-setopt share_history
-
-# Don't add certain commands to the history file.
-# export HISTORY_IGNORE="(\&|[bf]g|c|clear|history|exit|q|pwd|* --help)"
-
-# Make new shells get the history lines from all previous
-# shells instead of the default "last window closed" history.
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND":x
-
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-# ZSH Options
-unsetopt beep
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-# Aliases
-
-alias ls=lsd
-# alias l = ls -l
-alias nv=nvim
-alias lt='ls --tree --depth 3'
-alias cp="rsync -a --info=progress2"
-alias transfer="rsync -r --info=progress2"
-alias cd=z
-alias top=bt
-alias grep=rg
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-# Plugins
-
-# Enable zoxide 
-eval "$(zoxide init zsh)"
-
-# Enable starship
-eval "$(starship init zsh)"
-
-# Enable fzf
-# source <(fzf --zsh)
-# source /usr/share/cachyos-zsh-config/cachyos-config.zsh
-
-# Enable znap plugin manager
-# Download Znap, if it's not there yet.
-[[ -r ~/.dotfiles/zsh_plugins/znap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/.dotfiles/zsh_plugins/znap
-source ~/.dotfiles/zsh_plugins/znap/znap.zsh  # Start Znap
-
-znap source zshzoo/cd-ls 
-znap source zsh-users/zsh-autosuggestions
-znap source zdharma-continuum/fast-syntax-highlighting
-ZVM_INIT_MODE=sourcing
-znap source jeffreytse/zsh-vi-mode
-znap source zsh-users/zsh-history-substring-search
-
-source /usr/share/zsh/plugins/zsh-fzf-plugin/fzf.plugin.zsh
-
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-# Tmux
-if [[ -z "$TMUX" ]] then
-    tmux attach-session -t default || tmux new-session -s default
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+    (( $+functions[z] )) && alias cd=z
+fi
+if (( $+commands[starship] )); then
+    eval "$(starship init zsh)"
 fi
 
-
-fastfetch --logo arch
-
-. "$HOME/.local/share/../bin/env"
+if [[ -r "$HOME/.zshrc.local" ]]; then
+    source "$HOME/.zshrc.local"
+fi
