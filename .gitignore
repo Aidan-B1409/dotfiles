@@ -1,2 +1,8 @@
 tmux/plugins
 zsh_plugins/
+
+# Machine-managed skill state and generated Python caches.
+.agents/.skill-lock.json
+.agents/skills/.system/
+.agents/**/__pycache__/
+.agents/**/*.pyc

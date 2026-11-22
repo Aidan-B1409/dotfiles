@@ -3,9 +3,19 @@
       relink: true
       create: true
 
-- clean: ['~']
+- clean: ['~', '~/.agents/skills']
 
 - link:
+    ~/.codex/AGENTS.md:
+      path: codex/AGENTS.md
+      if: 'test -z "$CODEX_HOME"'
+    "$CODEX_HOME/AGENTS.md":
+      path: codex/AGENTS.md
+      if: 'test -n "$CODEX_HOME"'
+    ~/.agents/skills/:
+      glob: true
+      path: .agents/skills/*
+      if: 'test ! "$HOME/.agents/skills" -ef .agents/skills'
     ~/.tmux.conf: tmux.conf
     ~/.config/starship.toml: starship.toml
     ~/.zshrc: zshrc
