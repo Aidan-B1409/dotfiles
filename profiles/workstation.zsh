@@ -23,5 +23,10 @@ if (( $+commands[fzf] )); then
 fi
 
 if [[ -z ${TMUX:-} && -t 0 && -t 1 ]] && (( $+commands[tmux] )); then
-    tmux new-session -A -s default
+    if [[ -n ${_dotfiles_login_warning:-} ]]; then
+        tmux new-session -A -s default \; display-message -d 10000 "$_dotfiles_login_warning" &&
+            unset _dotfiles_login_warning
+    else
+        tmux new-session -A -s default
+    fi
 fi
