@@ -1,0 +1,28 @@
+{
+  "marketplaces": {
+    "ars-codex": {
+      "source": "https://github.com/Imbad0202/academic-research-skills-codex.git",
+      "ref": "82725acb393c4410ac6f47634a7f51b40a162fa4"
+    },
+    "claude-code-workflows": {
+      "source": "https://github.com/wshobson/agents.git",
+      "ref": "91ff75307f5668916f3eb77d5ba556266c961376"
+    },
+    "text-to-cad": {
+      "path": "~/.local/state/cad/plugin"
+    }
+  },
+  "profiles": {
+    "common": [
+      "ars-codex@ars-codex",
+      "python-development@claude-code-workflows"
+    ],
+    "hpc": [],
+    "workstation": [
+      "text-to-cad@text-to-cad",
+      "google-drive@openai-curated-remote",
+      "app-6943b73823548191a9f9216c6790c453@openai-curated-remote",
+      "zotero@openai-curated-remote"
+    ]
+  }
+}

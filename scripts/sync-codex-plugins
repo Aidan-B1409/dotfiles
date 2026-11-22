@@ -1,0 +1,104 @@
+#!/usr/bin/env python3
+"""Install the Codex plugins selected for one dotfiles profile."""
+
+import argparse
+import json
+import shlex
+import subprocess
+import sys
+from pathlib import Path
+
+MANIFEST = Path(__file__).resolve().parents[1] / "codex" / "plugins.json"
+
+
+def inventory(*args):
+    output = subprocess.check_output(["codex", "plugin", *args, "--json"], text=True)
+    return json.loads(output)
+
+
+def apply(args, dry_run):
+    print(shlex.join(args), flush=True)
+    if not dry_run:
+        subprocess.run(args, check=True)
+
+
+def prepare_marketplace(name, spec, current, dry_run):
+    if "path" in spec:
+        path = Path(spec["path"]).expanduser().resolve()
+        if not path.is_dir():
+            raise ValueError(f"{name}: install its local marketplace at {path} first")
+        source = str(path)
+    else:
+        source = spec["source"]
+
+    if current is None:
+        args = ["codex", "plugin", "marketplace", "add", source]
+        if "ref" in spec:
+            args += ["--ref", spec["ref"]]
+        apply(args, dry_run)
+        return
+
+    if current.get("marketplaceSource", {}).get("source") != source:
+        raise ValueError(f"{name}: registered source differs from {source}")
+    if "ref" in spec:
+        head = subprocess.check_output(
+            ["git", "-C", current["root"], "rev-parse", "HEAD"], text=True
+        ).strip()
+        if head != spec["ref"]:
+            raise ValueError(f"{name}: checkout is {head}, manifest expects {spec['ref']}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("profile", choices=["hpc", "workstation"])
+    parser.add_argument("--dry-run", action="store_true", help="print changes without applying them")
+    args = parser.parse_args()
+    with MANIFEST.open() as file:
+        manifest = json.load(file)
+    desired = sorted(set(manifest["profiles"]["common"] + manifest["profiles"][args.profile]))
+    selected_markets = {}
+    for plugin in desired:
+        name, separator, marketplace = plugin.partition("@")
+        if not (name and separator and marketplace) or "@" in marketplace:
+            raise ValueError(f"Invalid plugin ID {plugin!r}, expected plugin@marketplace")
+        selected_markets[plugin] = marketplace
+    installed = {p["pluginId"]: p for p in inventory("list")["installed"]}
+    markets = {m["name"]: m for m in inventory("marketplace", "list")["marketplaces"]}
+
+    failed = False
+    blocked = set()
+    for name in sorted(set(selected_markets.values())):
+        if name not in manifest["marketplaces"]:
+            continue  # Codex resolves directory plugins directly.
+        try:
+            prepare_marketplace(name, manifest["marketplaces"][name], markets.get(name), args.dry_run)
+        except (OSError, ValueError, subprocess.CalledProcessError) as error:
+            print(error, file=sys.stderr)
+            blocked.add(name)
+            failed = True
+
+    for plugin in desired:
+        if plugin in installed:
+            state = "installed" if installed[plugin]["enabled"] else "installed (disabled)"
+            print(f"{state}: {plugin}")
+        elif selected_markets[plugin] not in blocked:
+            try:
+                apply(["codex", "plugin", "add", plugin], args.dry_run)
+            except subprocess.CalledProcessError as error:
+                print(error, file=sys.stderr)
+                failed = True
+
+    for plugin in sorted(installed.keys() - set(desired)):
+        item = installed[plugin]
+        if item["marketplaceName"] in ("openai-bundled", "openai-primary-runtime"):
+            continue
+        if item.get("installPolicy") != "INSTALLED_BY_DEFAULT":
+            print(f"outside profile: {plugin}")
+    return int(failed)
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except (OSError, ValueError, KeyError, subprocess.CalledProcessError) as error:
+        sys.exit(f"Plugin sync failed: {error}")
