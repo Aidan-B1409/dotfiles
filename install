@@ -2,14 +2,17 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
+profile=hpc
+case "${1:-}" in
+    hpc|workstation) profile=$1; shift ;;
+    -h|--help) echo "Usage: ./install [hpc|workstation] [dotbot options] (default: hpc)"; exit 0 ;;
+    ""|-*) ;;
+    *) echo "Unknown profile: $1 (expected hpc or workstation)" >&2; exit 2 ;;
+esac
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$(dirname "${BASH_SOURCE[0]}")"
+git submodule sync --quiet --recursive -- dotbot
+git submodule update --init --recursive -- dotbot
 
-cd "${BASEDIR}"
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
-
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+exec dotbot/bin/dotbot -d "$PWD" --exit-on-failure \
+    -c install.conf.yaml "install.$profile.conf.yaml" "$@"

@@ -1,0 +1,13 @@
+- shell:
+  - command: git submodule update --init --recursive -- nvim
+    description: Fetching the Neovim configuration
+    stderr: true
+
+- link:
+    ~/.config/nvim: nvim
+    ~/.config/kitty: kitty
+
+- shell:
+  - command: scripts/setup-zsh --workstation
+    description: Setting up shell completions and workstation Zsh plugins
+    stderr: true
