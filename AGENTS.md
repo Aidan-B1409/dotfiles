@@ -7,3 +7,7 @@ Run `./install hpc` (the default) or `./install workstation` from a plain clone.
 - Put defaults for every interactive shell in `zshrc`. Dotbot links `~/.zshrc` to this file. Its final step sources `~/.zshrc.local` if readable.
 - Put settings shared by a group of machines in `profiles/`. For example, `profiles/workstation.zsh` handles Flutter, Znap plugins, fzf, and tmux for the laptop and desktop.
 - Use `~/.zshrc.local` for host-specific settings and profile selection. On a workstation, add `source "$HOME/.dotfiles/profiles/workstation.zsh"` to that file. On the HPC, it can contain cluster-specific settings or be absent to use only the shared defaults.
+
+## Codex configuration
+
+Both install profiles link `codex/AGENTS.md` into Codex home (default `~/.codex`) for user-wide instructions. This repo's root `AGENTS.md` applies to the dotfiles checkout. Keep standalone skills and their companion files in `.agents/skills/<name>/`. Dotbot links each skill into `~/.agents/skills/`.
