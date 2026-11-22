@@ -17,3 +17,5 @@ Both install profiles link `codex/AGENTS.md` into Codex home (default `~/.codex`
 After Codex is available, run `scripts/sync-codex-plugins hpc` or `scripts/sync-codex-plugins workstation`. Add `--dry-run` to preview. Edit `codex/plugins.json` to change the common set, profile additions, or Git marketplace commit pins. The opaque workstation app ID is Todoist. Text-to-CAD requires its local marketplace to be provisioned by the CAD installer first.
 
 Sync registers missing marketplaces, checks registered Git checkout revisions, and installs missing plugins. It reports disabled or extra installs and leaves those choices intact. Directory plugins use the version Codex offers. To adopt a different Git revision, update the pin and align the registered marketplace before syncing. Existing plugin versions stay in place during sync.
+
+Use the Python Development plugin for Python code style and design patterns on both profiles. CAD skills come from Text-to-CAD on workstations. After changing skill providers, run Dotbot to clean stale skill links and refresh the user-managed skill inventory in `codex/skills.json`.

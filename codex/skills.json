@@ -1,0 +1,74 @@
+{
+  "scope": "User-managed skills after Dotbot installation and plugin sync. The workstation profile adds to the common set.",
+  "common": {
+    "standalone": [
+      "create-readme",
+      "find-skills",
+      "gh-stack",
+      "grill-me",
+      "grilling",
+      "humanizer",
+      "modern-python",
+      "openbalena-local-dev",
+      "unslop",
+      "wandb-primary",
+      "writing-clearly-and-concisely",
+      "writing-for-agents"
+    ],
+    "plugins": {
+      "ars-codex@ars-codex": [
+        "academic-research-suite"
+      ],
+      "python-development@claude-code-workflows": [
+        "async-python-patterns",
+        "python-anti-patterns",
+        "python-background-jobs",
+        "python-code-style",
+        "python-configuration",
+        "python-design-patterns",
+        "python-error-handling",
+        "python-observability",
+        "python-packaging",
+        "python-performance-optimization",
+        "python-project-structure",
+        "python-resilience",
+        "python-resource-management",
+        "python-testing-patterns",
+        "python-type-safety",
+        "uv-package-manager"
+      ]
+    }
+  },
+  "workstation_additions": {
+    "plugins": {
+      "text-to-cad@text-to-cad": [
+        "bambu-labs",
+        "cad",
+        "dfam-check",
+        "dfm",
+        "dxf",
+        "engineering-drawing",
+        "gcode",
+        "sdf",
+        "sendcutsend",
+        "srdf",
+        "step-parts",
+        "urdf"
+      ],
+      "google-drive@openai-curated-remote": [
+        "google-docs",
+        "google-drive",
+        "google-drive-comments",
+        "google-sheets",
+        "google-slides"
+      ],
+      "app-6943b73823548191a9f9216c6790c453@openai-curated-remote": [],
+      "zotero@openai-curated-remote": [
+        "Zotero"
+      ]
+    }
+  },
+  "disabled_standalone_on_this_workstation": [
+    "unslop"
+  ]
+}
